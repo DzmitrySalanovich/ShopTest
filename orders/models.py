@@ -21,7 +21,7 @@ class Order(models.Model):
 class LineItem(models.Model):
     product_sku = models.IntegerField()
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-    datatime = models.DateTimeField('date ordered')
+    datatime = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=3)
     quantity = models.IntegerField()

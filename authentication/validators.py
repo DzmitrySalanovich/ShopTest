@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 def validate_birthday(birthday):
     if birthday > datetime.date.today():
-        raise ValidationError("The birthdat can't be in future")
+        raise ValidationError("The birthday can't be in future")
 
 
 @deconstructible
