@@ -12,7 +12,7 @@ class Order(models.Model):
         (IN_PROGRESS, 'In progress'),
         (COMPLITE, 'Complite'),
     ]
-    user = models.ForeignKey(to=User, on_delete = models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete = models.CASCADE, related_name='orders')
     cost = models.DecimalField(max_digits=10, decimal_places=3)
     cc_number = models.CharField(max_length=15)
     status = models.CharField(choices=STATUSES, max_length=100)
