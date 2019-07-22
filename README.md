@@ -3,7 +3,8 @@
 #### 1. Run Project
 
 ```
-run environment in .env run activate script
-run pipenv shell 
+pip install pipenv
+pipenv install --dev
+pipenv shell
 python manage.py runserver
 ```
