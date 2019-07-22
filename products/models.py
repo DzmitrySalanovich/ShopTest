@@ -15,7 +15,7 @@ class Product(models.Model):
     discount = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
-    category = models.ManyToManyField(to=Category)
+    category = models.ManyToManyField(to=Category, related_name='products')
 
     def __str__(self):
         return self.name
