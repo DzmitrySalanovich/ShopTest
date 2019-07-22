@@ -3,5 +3,6 @@ from authentication.models import User, UserManager
 
 class UserAdmin(admin.ModelAdmin):
     pass
+
 admin.site.register(User, UserAdmin)
 
