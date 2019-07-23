@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'authentication',
     'orders',
     'products',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +88,12 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 1
 }
 
 

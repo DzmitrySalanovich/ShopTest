@@ -1,3 +1,28 @@
+from django.http import HttpResponse, JsonResponse
+from rest_framework.decorators import action
+from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework import status
+from django.core.paginator import Paginator
 from django.shortcuts import render
+from .models import Category, Product, Product_att
+from .serializers import CategorySerializer, ProductSerializer, Product_attSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
-# Create your views here.
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['price']
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+        
+    @action(detail=True, methods=['get'])
+    def subcategories(self, request, *args, **kwargs):
+        self.queryset = self.get_object().subcategories
+        return self.list(request)
