@@ -1,0 +1,22 @@
+---
+
+version: "3"
+
+services:
+  psdb:
+    image: "postgres:11-alpine"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - devnet
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:5432:5432"
+
+networks:
+  devnet:
+    driver: bridge
+
+volumes:
+  pgdata:
